@@ -1,0 +1,151 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+#define print(x) cout << x << endl;
+
+
+
+class Rabbit
+{
+public:
+    int foodL = 5;
+    int happinessL= 10;
+    bool alive = 1;
+};
+
+class Snake
+{
+public:
+    int waterL = 5;
+    int foodL = 5;
+    int happinessL = 10;
+    bool alive = 1;
+};
+class Dog
+{
+public:
+    int waterL = 5;
+    int foodL = 5;
+    int happinessL = 10;
+    bool alive = 1;
+};
+
+
+int Feed(int&foodL,int& foodCap)
+{
+
+
+        print("You fed your pet!");
+        if (foodL != foodCap)
+        {
+            print("\nYour Food level Went Up!");
+            foodL++;
+        }
+        else
+        {
+            print("\nYou are already full so nothing happend\n");
+        }
+        print("YOU Earned 10 coins!\n")
+
+        
+
+
+    return 0;
+}
+
+int Play(int& level,int& FoodL)
+{
+
+
+        print("You are playing with your pet!\n");
+        print("Running...\n");
+        print("Jumping...\n");
+        print("Slithering..\n");
+        if (level < 10)
+        {
+            print("Your pet's happiness level used to be: " << level << "\n");
+            level++;
+            print("But it is now: " << level << "\n");
+            print("\n\nBUT, your pet went from food level: " << FoodL);
+            FoodL--;
+            print("\nTo food level: " << FoodL);
+        }
+        else
+        {
+            print("Your pet is already happy so nothing happened\n")
+            print("\n\nBUT, your pet went from food level: " << FoodL);
+            FoodL--;
+            print("\nTo food level: " << FoodL);
+        }
+        print("YOU Earned 10 coins!\n");
+
+    return 0;
+
+}
+
+
+using namespace std;
+
+int main()
+{
+    int maxFoodCap = 5;
+    int CoinAmt = 50;
+    Rabbit Rabbit;
+    string Choice1 = "A";
+    int day = 0;
+    string pet1;
+    print("Welcome to pet simulator\n");
+    print("Here is some info and how to keep your pet alive.\n");
+    print("* You can have up to 2 pets\n");
+    print("* Every Turn results in each pet losing 1 food level(With an exeption to feeding)\n");
+    print("* You can check the pets food level and water level and it will tell you its levels after said turn.\n");
+    print("* Each pet starts with a base 5 food and 5 Water and is a base max of 10\n");
+    print("There are upgrades to the food and water storages but those are still a WIP");
+    print("Your choices of pets are a Rabbit, a Snake, and a Dog");
+    print("You may choose only one for now but can buy another one with coins later.");
+    print("So which pet do you choose?(Please type the name as stated above with the right capitals)");
+    cin >> pet1;
+    if (pet1 == "Rabbit")
+    {
+        print("You chose a rabbit as your first pet!");
+        while (Choice1 != "D")
+        {
+            print("Would you like to \nA) Play\nB) Feed\nC) Display Stats\nD) Exit/Go To Shop\n(Please type the letter in all caps)");
+            cin >> Choice1;
+            if (Choice1 == "A")
+            {
+                
+                Play(Rabbit.happinessL, Rabbit.foodL);
+                CoinAmt = CoinAmt + 10;
+            }
+            else if (Choice1 == "B")
+            {
+                Rabbit.happinessL--;
+                Feed(Rabbit.foodL,maxFoodCap);
+                CoinAmt = CoinAmt + 10;
+            }
+            else if (Choice1 == "C")
+            {
+                print("\nFood level: " << Rabbit.foodL);
+                print("\nHappiness: " << Rabbit.happinessL);
+                print("\nCoins: " << CoinAmt);
+                if (Rabbit.alive == 0)
+                {
+                    print("\nYour Pet is dead!")
+                }
+                else
+                {
+                    print("\nYour Pet is Alive!\n");
+                }
+            }
+        }
+
+    }
+
+
+
+
+    system("pause");
+}
